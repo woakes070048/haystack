@@ -12,7 +12,7 @@ class SessionsController extends \BaseController {
 	public function __construct(LoginForm $loginForm, UserInterface $user)
 	{
 	    $this->loginForm = $loginForm;
-	    $this->userRepo = $user;
+	    $this->userRepo  = $user;
 	}
 
 	/**
