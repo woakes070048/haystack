@@ -15,4 +15,23 @@ class BaseController extends Controller {
 		}
 	}
 
+	protected function redirectTo($url, $statusCode = 302)
+	{
+		return Redirect::to($url, $statusCode);
+	}
+
+	protected function redirectAction($action, $data = [])
+	{
+		return Redirect::action($action, $data);
+	}
+
+	protected function redirectBack($data = [])
+	{
+		return Redirect::back()->withInput()->with($data);
+	}
+
+	protected function redirectBackWithMessage($type, $message)
+	{
+		return Redirect::back()->withInput()->with($type, $message);
+	}
 }
