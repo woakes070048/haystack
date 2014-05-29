@@ -119,6 +119,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Authority\AuthorityL4\AuthorityL4ServiceProvider',
+		'Laracasts\Validation\ValidationServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
 
 	),
 
@@ -185,7 +189,9 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
+		'Excel'			  => 'Maatwebsite\Excel\Facades\Excel',
+		'Carbon'          => 'Carbon\Carbon',
+		'Authority'       => 'Authority\AuthorityL4\Facades\Authority',
 	),
 
 );
