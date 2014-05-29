@@ -3,84 +3,73 @@
 class RemindersController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
-	 * GET /auth/reminders
+	 * Display the password reminder view.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getRemind()
 	{
-		//
+		return View::make('auth.reminders.create');
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 * GET /auth/reminders/create
+	 * Handle a POST request to remind a user of their password.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function postRemind()
 	{
-		//
+		switch ($response = Password::remind(Input::only('email')))
+		{
+			case Password::INVALID_USER:
+				return Redirect::back()->with('error', Lang::get($response));
+
+			case Password::REMINDER_SENT:
+				return Redirect::back()->with('status', Lang::get($response));
+		}
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 * POST /auth/reminders
+	 * Display the password reset view for the given token.
 	 *
+	 * @param  string  $token
 	 * @return Response
 	 */
-	public function store()
+	public function getReset($token = null)
 	{
-		//
+		if (is_null($token)) App::abort(404);
+
+		return View::make('auth.reminders.reset')->with('token', $token);
 	}
 
 	/**
-	 * Display the specified resource.
-	 * GET /auth/reminders/{id}
+	 * Handle a POST request to reset a user's password.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function postReset()
 	{
-		//
-	}
+		$credentials = Input::only(
+			'email', 'password', 'password_confirmation', 'token'
+		);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /auth/reminders/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+		$response = Password::reset($credentials, function($user, $password)
+		{
+			$user->password = Hash::make($password);
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /auth/reminders/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+			$user->save();
+		});
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /auth/reminders/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		switch ($response)
+		{
+			case Password::INVALID_PASSWORD:
+			case Password::INVALID_TOKEN:
+			case Password::INVALID_USER:
+				return Redirect::back()->with('error', Lang::get($response));
+
+			case Password::PASSWORD_RESET:
+				return Redirect::to('/');
+		}
 	}
 
 }
