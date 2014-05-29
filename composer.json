@@ -8,6 +8,7 @@
 	},
 	"autoload": {
 		"classmap": [
+			"app/Atticus",
 			"app/commands",
 			"app/controllers",
 			"app/models",

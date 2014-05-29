@@ -13,6 +13,7 @@
 
 ClassLoader::addDirectories(array(
 
+	app_path().'/Atticus',
 	app_path().'/commands',
 	app_path().'/controllers',
 	app_path().'/models',
@@ -35,7 +36,18 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------
-| Application Error Handler
+| Application Event Handlers
+|--------------------------------------------------------------------------
+|
+| Here you may handle any events that occur in your application.
+|
+*/
+
+require app_path().'/events.php';
+
+/*
+|--------------------------------------------------------------------------
+| Application Error Handlers
 |--------------------------------------------------------------------------
 |
 | Here you may handle any errors that occur in your application, including
@@ -46,10 +58,7 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
-{
-	Log::error($exception);
-});
+require app_path().'/errors.php';
 
 /*
 |--------------------------------------------------------------------------
