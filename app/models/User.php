@@ -6,6 +6,10 @@ use Laracasts\Presenter\PresentableTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+	use PresentableTrait;
+
+    protected $presenter = 'UserPresenter';
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -23,10 +27,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $guarded = array();
 
 	protected $softDeletes = true;
-
-	use PresentableTrait;
-
-    protected $presenter = 'UserPresenter';
 	
 	/**
 	 * Get the unique identifier for the user.

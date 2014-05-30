@@ -22,6 +22,6 @@ class TeamsController extends \BaseController {
 	{
 		$teams = $this->teamRepo->all();
 
-		return View::make('admin.teams.index')->with(compact($teams));
+		return View::make('admin.teams.index')->withTeams($teams);
 	}
 }

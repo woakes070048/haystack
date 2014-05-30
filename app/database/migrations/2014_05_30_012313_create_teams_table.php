@@ -21,6 +21,7 @@ class CreateTeamsTable extends Migration {
 			$table->string('practice');
 			
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
