@@ -13,6 +13,10 @@
 
   <body>
 
+    @include('_partials.sidebar')
+    
+    @include('_partials.navbar')
+
     @yield('content')
 
     <script src="/dist/js/application.min.js"></script>

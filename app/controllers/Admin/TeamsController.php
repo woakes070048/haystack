@@ -1,6 +1,8 @@
 <?php namespace Admin;
 
-class Admin/TeamsController extends \BaseController {
+use View;
+
+class TeamsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -10,7 +12,7 @@ class Admin/TeamsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('admin.teams.index');
 	}
 
 	/**

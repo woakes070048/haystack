@@ -12,3 +12,8 @@ Event::listen('session.create', function($user)
 
 	if ( $user->save() ) return true;
 });
+
+View::composer(array('_partials.navbar', '_partials.sidebar'), function($view)
+{
+	$view->with('current_user', Auth::user());
+});

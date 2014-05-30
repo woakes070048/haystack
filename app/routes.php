@@ -17,8 +17,16 @@ Route::group(array('before' => 'guest'), function()
 
 Route::group(array('before' => 'auth'), function() 
 {
+	Route::group(array('before' => 'auth.admin', 'prefix' => 'admin'), function() 
+	{
+		Route::resource('users', 'Admin\UsersController'); 
 
+		Route::resource('offices', 'Admin\OfficesController');
 
+		Route::resource('teams', 'Admin\TeamsController');
+	});
+
+	Route::get('/', 'HomeController@index');
 });
 
 Route::get('logout', 'SessionsController@destroy');

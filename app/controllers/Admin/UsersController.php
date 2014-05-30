@@ -1,5 +1,7 @@
 <?php namespace Admin;
 
+use View;
+
 class UsersController extends \BaseController {
 
 	/**
@@ -10,7 +12,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('admin.users.index');
 	}
 
 	/**
