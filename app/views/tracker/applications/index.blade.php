@@ -5,10 +5,10 @@
 @stop
 
 @section('page-header')
-  <h3 class="pull-left"><i class="fa fa-dashboard lblue"></i> Dashboard</h3>
+  <h3 class="pull-left"><i class="fa fa-user lblue"></i> Applications</h3>
   <!-- Bread crumbs -->
   <div class="breads pull-right">
-    <strong>Nav</strong> : <a href="/">Tracker</a> / Dashboard
+    <strong>Nav</strong> : <a href="/">Tracker</a> / Applications
   </div>
 @stop
 

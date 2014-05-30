@@ -12,12 +12,30 @@
   </head>
 
   <body>
+    <div class="outer">
 
-    @include('_partials.sidebar')
-    
-    @include('_partials.navbar')
+      @include('_partials.sidebar')
+      
+      @include('_partials.navbar')
 
-    @yield('content')
+      <div class="main-content">
+        <div class="container">
+                
+          <div class="page-content">
+            
+            <div class="single-head">
+              
+              @yield('page-header')
+
+              <div class="clearfix"></div>
+            </div>
+
+            @yield('content')
+
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="/dist/js/application.min.js"></script>
     <script src="/dist/js/prettify.js"></script>

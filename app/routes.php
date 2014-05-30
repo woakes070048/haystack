@@ -28,6 +28,9 @@ Route::group(array('before' => 'auth'), function()
 		Route::resource('teams', 'Admin\TeamsController');
 	});
 
+	Route::resource('applications', 'Tracker\ApplicationsController');
+	Route::resource('applications.comments', 'Tracker\ApplicationCommentsController');
+
 	Route::controller('account','AccountController');
 });
 
