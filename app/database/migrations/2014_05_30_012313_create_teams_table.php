@@ -17,7 +17,7 @@ class CreateTeamsTable extends Migration {
 			$table->increments('id');
 
 			$table->string('name');
-			$table->string('abbr');
+			$table->string('abbrv');
 			$table->string('practice');
 			
 			$table->timestamps();

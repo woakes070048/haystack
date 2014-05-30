@@ -9,11 +9,30 @@ class UsersTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			User::create([
+		$locations = Office::all();
+		$title = array('Consultant', 'Senior Consultant', 'Director', 'Senior Director', 'Managing Director', 'Senior Managing Director');
+		$team  = Team::all();
 
-			]);
+		for ($i=0; $i < 25; $i++) { 
+			$first = $faker->firstName;
+			$last  = $faker->lastName;
+
+			$input = [
+	          'first_name' => $first,
+	          'last_name'  => $last,
+	          'email'      => strtolower($first).".".strtolower($last)."@fticonsulting.com",
+	          'password'   => Hash::make('password1234'),
+	          'office_id'  => $faker->randomNumber(1,9),
+	          'team_id'	   => $faker->randomNumber(1,5),
+	          'title'      => $title[array_rand($title)]
+			];
+
+			$created = User::create($input);
+
+			DB::table('role_user')->insert(array(
+				'user_id' => $created->id,
+				'role_id' => $faker->randomNumber(1, 3)
+			));			
 		}
 	}
 

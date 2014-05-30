@@ -1,39 +1,36 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
-
-class PositionsTableSeeder extends Seeder {
+class TeamsTableSeeder extends Seeder {
 
 	public function run()
 	{
 		$feda  = [
 			'name' 	   => 'Financial & Enterprise Data Analytics', 
-			'abbr' 	   => 'FEDA', 
+			'abbrv'    => 'FEDA', 
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 
 		$grip  = [
 			'name'     => 'Global Risk & Investigations Practice', 
-			'abbr' 	   => 'GRIP', 
+			'abbrv'    => 'GRIP', 
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 
 		$flc   = [
 			'name' 	   => 'Forensic & Litigation Consulting', 
-			'abbr' 	   => 'FLC', 
+			'abbrv'    => 'FLC', 
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 
 		$faas  = [
 			'name' 	   => 'Forensic Accounting & Advisory Services', 
-			'abbr'	   => 'FAAS', 
+			'abbrv'	   => 'FAAS', 
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 
 		$trial = [
 			'name' 	   => 'Trial Services', 
-			'abbr' 	   => 'Trial Services', 
+			'abbrv'    => 'Trial Services', 
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 

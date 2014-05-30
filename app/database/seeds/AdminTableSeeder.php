@@ -16,6 +16,8 @@ class AdminTableSeeder extends Seeder {
 		
 		$user = User::create($input);
 
+		$adminRole = Role::where('name', '=', 'admin')->first();
+
 		DB::table('role_user')->insert(array(
            'user_id' => $user->id, 
            'role_id' => $adminRole->id
