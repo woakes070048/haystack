@@ -6,7 +6,19 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function()
+
+Route::group(array('before' => 'guest'), function() 
 {
-	return View::make('hello');
+	Route::get('login', 'SessionsController@create');
+	Route::post('login', 'SessionsController@store');
+
+	Route::controller('password', 'RemindersController');
 });
+
+Route::group(array('before' => 'auth'), function() 
+{
+
+
+});
+
+Route::get('logout', 'SessionsController@destroy');

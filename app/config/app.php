@@ -123,7 +123,7 @@ return array(
 		'Laracasts\Validation\ValidationServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-
+		'Atticus\Repositories\StorageServiceProvider',
 	),
 
 	/*

@@ -35,13 +35,21 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if ( Auth::guest() ) return Redirect::to('login');
 });
 
 
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();
+});
+
+Route::filter('auth.admin', function()
+{
+   if ( !Auth::user()->hasRole('admin') )
+   {
+     return Redirect::to('/')->with('error', 'Insufficient user privileges to access this resource.');
+   }
 });
 
 /*
