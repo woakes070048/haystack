@@ -88,3 +88,11 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require The Validation Extension File
+|--------------------------------------------------------------------------
+*/
+
+require app_path().'/validators.php';

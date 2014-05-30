@@ -2,7 +2,7 @@
 
 use Atticus\Repositories\User\UserInterface;
 use Atticus\Repositories\DbRepository;
-use User;
+use User, DB;
 
 class UserRepository extends DbRepository implements UserInterface {
 
@@ -17,5 +17,20 @@ class UserRepository extends DbRepository implements UserInterface {
 	{
 		return $this->model->where('email', '=', $email)->first();
 	}
-	
+
+	public function createWithRole(array $input, int $role)
+	{
+		$user = $this->create($input);
+
+		if ( $user )
+		{
+			DB::table('role_user')->insert([
+				'user_id' => $user->id,
+				'role_id' => $role
+			]);
+		}
+
+		return $user;
+	}
+
 }
