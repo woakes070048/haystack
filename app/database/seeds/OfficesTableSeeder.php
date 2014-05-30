@@ -1,20 +1,17 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
-
 class OfficesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
+		$offices = ['Chicago', 'Washington DC', 'Los Angeles', 'San Francisco', 
+					'Boston', 'London', 'Atlanta', 'Denver', 'Hong Kong'];
 
-		foreach(range(1, 10) as $index)
-		{
-			Office::create([
-
-			]);
-		}
+		foreach ($offices as $office) {
+			Office::create(array(
+				'location' => $office
+			));
+		}		
 	}
 
 }
