@@ -20,6 +20,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+	protected $guarded = array();
+
 	protected $softDeletes = true;
 
 	use PresentableTrait;

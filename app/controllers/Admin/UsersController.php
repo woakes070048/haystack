@@ -1,15 +1,19 @@
 <?php namespace Admin;
 
 use Atticus\Repositories\User\UserInterface;
+use Atticus\Forms\Users\Create as CreateForm;
 use Input, Hash, View;
 
 class UsersController extends \BaseController {
 
 	protected $userRepo;
 
-	public function __construct(UserInterface $user)
+	protected $createForm;
+
+	public function __construct(UserInterface $user, CreateForm $create)
 	{
-		$this->userRepo = $user;
+		$this->userRepo   = $user;
+		$this->createForm = $create;
 	}
 
 	/**
@@ -56,7 +60,7 @@ class UsersController extends \BaseController {
 
 		unset($input['role']);
 
-		$input = array_merge(array('password' => Hash::make('change')));
+		$input = array_merge($input, array('password' => Hash::make('change'))); # default password
 
 		$user = $this->userRepo->createWithRole($input, Input::get('role'));
 

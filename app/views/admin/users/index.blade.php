@@ -65,7 +65,7 @@
 							<td>
 								<a href="/admin/users/{{ $user->id }}/edit" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
 								@if ( $user->id != Auth::user()->id )
-									{{ ViewHelper::makeDeleteButton($user->id) }} 
+									{{ Button::makeDelete($user->id) }} 
 								@endif
 							</td>
 						</tr>

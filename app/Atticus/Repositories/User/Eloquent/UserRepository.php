@@ -18,7 +18,7 @@ class UserRepository extends DbRepository implements UserInterface {
 		return $this->model->where('email', '=', $email)->first();
 	}
 
-	public function createWithRole(array $input, int $role)
+	public function createWithRole(array $input, $role)
 	{
 		$user = $this->create($input);
 

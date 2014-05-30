@@ -10,13 +10,14 @@ class Create extends FormValidator {
      * @var array
      */
     protected $rules = [
-    	'first_name' => 'required|alpha',
-    	'last_name'  => 'required|alpha',
-        'email'      => 'required|email',
-        'password'   => 'required|between:5, 30',
-        'title'      => 'required',
-        'location'   => 'required|exists:offices, id'
-        'role'		 => 'required|in:1,2,3'
+    	'first_name' => 'required|alpha|max:40',
+    	'last_name'  => 'required|alpha|max:40',
+        'email'      => 'required|email|max:100',
+        'title'      => 'required|max:40',
+        'office_id'  => 'required|integer|exists:offices,id',
+        'team_id'    => 'required|integer|exists:teams,id',
+        'role'		 => 'required|integer|in:1,2,3'
     ];
 
 }
+
