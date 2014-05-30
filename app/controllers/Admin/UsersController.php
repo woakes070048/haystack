@@ -50,7 +50,7 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'title', 'role');
+		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'team_id', 'title', 'role');
 
 		$this->createForm->validate($input);
 

@@ -18,16 +18,9 @@
 	@include('_partials.notifications')				
 
 	<div class="page-tabs">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs">
-			<li>
-				<a href="/admin/users" class="br-lblue"><i class="fa fa-user lblue"></i> Directory</a>
-			</li>
-			<li>
-				<a href="/admin/users/create" class="br-red"><i class="fa fa-plus red"></i> Add New</a>
-			</li>
-		</ul>
-		<!-- Tab panes -->
+
+		@include('admin.users._nav')
+		
 		<div class="tab-content">
 			<div class="tab-pane fade active in" id="ausers">
 				<!-- Users table -->

@@ -23,10 +23,10 @@ class Dropdown {
 
 		$dropdown = "<select name='$name' class='$class'>";
 		foreach ($teams as $team) {
-			if ( $team->abbrv === $old_input ) {
-				$dropdown = $dropdown . "<option selected='selected' value='$team->id'>$team->abbrv</option>";
+			if ( $team->abbr === $old_input ) {
+				$dropdown = $dropdown . "<option selected='selected' value='$team->id'>$team->abbr</option>";
 			} else {
-				$dropdown = $dropdown . "<option value='$team->id'>$team->abbrv</option>";				
+				$dropdown = $dropdown . "<option value='$team->id'>$team->abbr</option>";				
 			}
 		}
 		return $dropdown . '</select>';
@@ -38,7 +38,7 @@ class Dropdown {
 
 		$dropdown = "<select name='$name' class='$class'>";
 		foreach ($roles as $role) {
-			if ( $role->abbrv === $old_input ) {
+			if ( $role->id === $old_input ) {
 				$dropdown = $dropdown . "<option selected='selected' value='$role->id'>$role->name</option>";
 			} else {
 				$dropdown = $dropdown . "<option value='$role->id'>$role->name</option>";				
