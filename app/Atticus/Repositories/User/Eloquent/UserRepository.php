@@ -33,4 +33,18 @@ class UserRepository extends DbRepository implements UserInterface {
 		return $user;
 	}
 
+	public function updateWithRole($id, array $input, $role)
+	{
+		$user = $this->update($id, $input);
+
+		if ( $user )
+		{
+			DB::table('role_user')
+	            ->where('user_id', $user->id)
+	            ->update(['role_id' => $role]);
+		}
+
+		return $user;
+	}
+
 }

@@ -99,7 +99,19 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'team_id', 'title', 'role');
+
+		$this->createForm->validate($input);
+		
+		unset($input['role']);
+
+		$user = $this->userRepo->updateWithRole($id, $input, Input::get('role'));
+
+		if ( $user )
+		{   
+			return $this->redirectBack()
+						->with('success', 'Employee information has been updated');
+		}
 	}
 
 	/**

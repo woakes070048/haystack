@@ -12,7 +12,7 @@ class Create extends FormValidator {
     protected $rules = [
     	'first_name' => 'required|alpha|max:40',
     	'last_name'  => 'required|alpha|max:40',
-        'email'      => 'required|email|max:100',
+        'email'      => 'required|email|unique:users|max:100',
         'title'      => 'required|max:40',
         'office_id'  => 'required|integer|exists:offices,id',
         'team_id'    => 'required|integer|exists:teams,id',
