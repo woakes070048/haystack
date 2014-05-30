@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Laracasts\Presenter\PresentableTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
@@ -20,6 +21,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password');
 
 	protected $softDeletes = true;
+
+	use PresentableTrait;
+
+    protected $presenter = 'UserPresenter';
 	
 	/**
 	 * Get the unique identifier for the user.

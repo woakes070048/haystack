@@ -14,7 +14,6 @@ class Dropdown {
 				$dropdown = $dropdown . "<option value='$office->id'>$office->location</option>";				
 			}
 		}
-
 		return $dropdown . '</select>';
 	}
 
@@ -30,8 +29,22 @@ class Dropdown {
 				$dropdown = $dropdown . "<option value='$team->id'>$team->abbrv</option>";				
 			}
 		}
-
 		return $dropdown . '</select>';
+	}
+
+	public static function roles($name, $class, $old_input)
+	{
+		$roles = Role::all();
+
+		$dropdown = "<select name='$name' class='$class'>";
+		foreach ($roles as $role) {
+			if ( $role->abbrv === $old_input ) {
+				$dropdown = $dropdown . "<option selected='selected' value='$role->id'>$role->name</option>";
+			} else {
+				$dropdown = $dropdown . "<option value='$role->id'>$role->name</option>";				
+			}
+		}
+		return $dropdown . '</select>';		
 	}
 
 }

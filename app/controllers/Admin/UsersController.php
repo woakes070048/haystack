@@ -1,7 +1,7 @@
 <?php namespace Admin;
 
 use Atticus\Repositories\User\UserInterface;
-use View;
+use Input, Hash, View;
 
 class UsersController extends \BaseController {
 
@@ -20,9 +20,15 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = $this->userRepo->all();
+		$allowed_columns = ['first_name', 'created_at', 'team_id', 'email', 'office_id', 'title'];
 
-		return View::make('admin.users.index')->with(compact($users));
+		$sort = in_array(Input::get('sort'), $allowed_columns) ? Input::get('sort') : 'created_at';
+		
+		$order = Input::get('order') === 'asc' ? 'asc' : 'desc';
+
+		$users = $this->userRepo->orderBy($sort, $order)->paginate(10);
+
+		return View::make('admin.users.index')->withUsers($users)->withSort($sort)->withOrder($order);
 	}
 
 	/**
