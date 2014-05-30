@@ -1,8 +1,16 @@
 <?php namespace Admin;
 
+use Atticus\Repositories\User\UserInterface;
 use View;
 
 class UsersController extends \BaseController {
+
+	protected $userRepo;
+
+	public function __construct(UserInterface $user)
+	{
+		$this->userRepo = $user;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -12,7 +20,9 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('admin.users.index');
+		$users = $this->userRepo->all();
+
+		return View::make('admin.users.index')->with(compact($users));
 	}
 
 	/**

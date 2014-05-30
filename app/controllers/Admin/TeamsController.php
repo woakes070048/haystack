@@ -1,8 +1,16 @@
 <?php namespace Admin;
 
+use Atticus\Repositories\Team\TeamInterface;
 use View;
 
 class TeamsController extends \BaseController {
+
+	protected $teamRepo;
+
+	public function __construct(TeamInterface $team)
+	{
+		$this->teamRepo = $team;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -12,7 +20,9 @@ class TeamsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('admin.teams.index');
+		$teams = $this->teamRepo->all();
+
+		return View::make('admin.teams.index')->with(compact($teams));
 	}
 
 	/**
