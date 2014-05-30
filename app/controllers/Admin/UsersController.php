@@ -33,7 +33,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.users.create');
 	}
 
 	/**
@@ -44,31 +44,40 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-	}
+		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'title', 'role');
 
-	/**
-	 * Display the specified resource.
-	 * GET /admin/users/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+		$this->createForm->validate($input);
+
+		unset($input['role']);
+
+		$input = array_merge(array('password' => Hash::make('change')));
+
+		$user = $this->userRepo->createWithRole($input, Input::get('role'));
+
+		if ( $user )
+		{   
+			return $this->redirectTo('/admin/users')
+						->with('success', 'Employee has been created');
+		}
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /admin/users/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		//
+		$user = $this->userRepo->findById($id);
+
+		if ( !$user )
+		{
+			return $this->redirectTo('/admin/users')
+						->with('info', 'Employee could not be found');
+		}
+
+		return View::make('admin.users.edit')->withUser($user);
 	}
 
 	/**
