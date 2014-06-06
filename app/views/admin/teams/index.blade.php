@@ -63,7 +63,16 @@
 		</div>		
 	</div>
 	<div class="col-md-5">
+		<div class="widget pages-widget">
+									
+			<div class="widget-head br-red">
+				<h3><i class="fa fa-file"></i> Create Team</h3>
+			</div>
 		
-	</div>
+			<div class="widget-body no-padd">
+
+			</div>
+		</div>
+	</div>	
 </div>	
 @stop

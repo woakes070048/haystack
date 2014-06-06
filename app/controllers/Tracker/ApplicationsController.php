@@ -1,5 +1,7 @@
 <?php namespace Tracker;
 
+use Atticus\Repositories\Tracker\Application\ApplicationInterface;
+use Atticus\Repositories\Tracker\Candidate\CandidateInterface;
 use View;
 
 class ApplicationsController extends \BaseController {
