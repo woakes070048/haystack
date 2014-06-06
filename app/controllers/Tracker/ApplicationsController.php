@@ -2,9 +2,20 @@
 
 use Atticus\Repositories\Tracker\Application\ApplicationInterface;
 use Atticus\Repositories\Tracker\Candidate\CandidateInterface;
-use View;
+use Input, View;
 
 class ApplicationsController extends \BaseController {
+
+	protected $appRepo;
+
+	protected $candidateRepo;
+
+	public function __construct(ApplicationInterface $app, CandidateInterface $candidate)
+	{
+	    $this->appRepo = $app;
+
+	    $this->candidateRepo = $candidate;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -13,7 +24,10 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('tracker.applications.index');
+		$applications = $this->appRepo->orderBy('created_at', 'desc')->paginate(10);
+
+		return View::make('tracker.applications.index')
+				->withApplications($applications);
 	}
 
 	/**

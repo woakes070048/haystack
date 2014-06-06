@@ -8,12 +8,22 @@ class Application extends \Eloquent {
 
     public function candidate()
     {
-    	return $this->belongsTo('Candidate');
+    	return $this->belongsTo('Tracker\Candidate');
+    }
+
+    public function office($id)
+    {
+    	return $this->hasOne('Office', 'id', "preferred_location".$id);
+    }
+
+    public function team()
+    {
+    	return $this->hasOne('Team', 'id', 'preferred_team');
     }
 
 	public function comments()
 	{
-		return $this->hasMany('Comments');
+		return $this->hasMany('Tracker\Candidate');
 	}
 
 	public function creator()

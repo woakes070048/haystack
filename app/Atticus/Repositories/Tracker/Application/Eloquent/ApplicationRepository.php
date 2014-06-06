@@ -2,13 +2,13 @@
 
 use Atticus\Repositories\Tracker\Application\ApplicationInterface;
 use Atticus\Repositories\DbRepository;
-use Application;
+use Tracker\Application as Application;
 
 class ApplicationRepository extends DbRepository implements ApplicationInterface {
 
 	protected $model;
 
-	public function __construct(User $model)
+	public function __construct(Application $model)
 	{
 		$this->model = $model;
 	}

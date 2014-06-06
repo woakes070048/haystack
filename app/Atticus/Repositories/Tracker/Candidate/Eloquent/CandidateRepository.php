@@ -2,13 +2,13 @@
 
 use Atticus\Repositories\Tracker\Candidate\CandidateInterface;
 use Atticus\Repositories\DbRepository;
-use Candidate;
+use Tracker\Candidate as Candidate;
 
 class CandidateRepository extends DbRepository implements CandidateInterface {
 
 	protected $model;
 
-	public function __construct(User $model)
+	public function __construct(Candidate $model)
 	{
 		$this->model = $model;
 	}

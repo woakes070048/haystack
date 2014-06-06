@@ -26,13 +26,13 @@ class ApplicationsTableSeeder extends Seeder {
 			$application = Tracker\Application::create([
 				'candidate_id'        => $candidate->id,
 				'requisition_number'  => $faker->randomNumber(3000, 3999),
-				'preferred_team'      => $teams[array_rand($teams)],
+				'preferred_team'      => array_rand($teams),
 				'preferred_title'     => $titles[array_rand($titles)],
 				'referring_employee'  => $faker->name,
 				'recruiting_contact'  => $faker->name,
-				'preferred_location1' => $offices[array_rand($offices)],
-				'preferred_location2' => $offices[array_rand($offices)],
-				'preferred_location2' => $offices[array_rand($offices)],
+				'preferred_location1' => array_rand($offices),
+				'preferred_location2' => array_rand($offices),
+				'preferred_location2' => array_rand($offices),
 				'network_path'		  => '//us_midwest/chiflc/random_folder/path/to/resume',
 				'created_by'		  => $faker->randomNumber(1,6)
 			]);
