@@ -17,8 +17,8 @@ class TeamsTableSeeder extends Seeder {
 		];
 
 		$flc   = [
-			'name' 	   => 'Forensic & Litigation Consulting', 
-			'abbrv'    => 'FLC', 
+			'name' 	   => 'Dispute Advisory Services', 
+			'abbrv'    => 'DAS', 
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 

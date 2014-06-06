@@ -6,7 +6,6 @@ class ApplicationsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /tracker/appcomments
 	 *
 	 * @return Response
 	 */
@@ -17,7 +16,6 @@ class ApplicationsController extends \BaseController {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /tracker/appcomments/create
 	 *
 	 * @return Response
 	 */
@@ -28,7 +26,6 @@ class ApplicationsController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /tracker/appcomments
 	 *
 	 * @return Response
 	 */
@@ -38,8 +35,17 @@ class ApplicationsController extends \BaseController {
 	}
 
 	/**
+	 * Store a newly created resource in storage via Excel upload.
+	 *
+	 * @return Response
+	 */
+	public function excel()
+	{
+		//
+	}
+
+	/**
 	 * Display the specified resource.
-	 * GET /tracker/appcomments/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -51,7 +57,6 @@ class ApplicationsController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /tracker/appcomments/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -63,7 +68,6 @@ class ApplicationsController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /tracker/appcomments/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -75,7 +79,6 @@ class ApplicationsController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /tracker/appcomments/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

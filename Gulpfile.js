@@ -60,8 +60,8 @@ gulp.task('scripts', function () {
     // 'public/vendor/jquery.steps/build/jquery.steps.min.js',
     // 'public/vendor/jquery.slimscroll/jquery.slimscroll.min.js',
     // 'public/vendor/fullcalendar/fullcalendar.min.js',
-      'public/vendor/respond/dest/respond.min.js',
-      'public/vendor/html5shiv/dist/html5shiv.min.js',
+   //   'public/vendor/respond/dest/respond.min.js',
+    //  'public/vendor/html5shiv/dist/html5shiv.min.js',
       'public/dist/js/custom.js'
   ])
   .pipe(concat('application.js'))

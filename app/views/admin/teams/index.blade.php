@@ -18,7 +18,7 @@
 		<div class="widget pages-widget">
 										
 			<div class="widget-head br-red">
-				<h3><i class="fa fa-file"></i> Current Teams</h3>
+				<h3><i class="fa fa-file"></i> View Teams</h3>
 			</div>
 			
 			<div class="widget-body no-padd">
@@ -28,7 +28,6 @@
 						<!-- Table heading -->
 						<tbody>
 							<tr> 
-								<th><input type="checkbox"></th>
 								<th>Name</th>
 								<th>Acronym</th>
 								<th>Practice</th>
@@ -39,9 +38,8 @@
 
 							@foreach($teams as $team)
 							<tr>
-								<td><input type="checkbox"></td>
 								<td>{{ $team->name }}</td>
-								<td>{{ $team->abbr }}</td>
+								<td>{{ $team->abbrv }}</td>
 								<td>{{ $team->practice }}</td>
 								<td>{{ $team->present()->employeeCount }}</td>
 								<td></td>

@@ -22,6 +22,6 @@ class OfficesController extends \BaseController {
 	{
 		$offices = $this->officeRepo->all();
 
-		return View::make('admin.offices.index')->with(compact($offices));
+		return View::make('admin.offices.index')->withOffices($offices);
 	}
 }

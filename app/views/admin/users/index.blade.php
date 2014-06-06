@@ -9,6 +9,8 @@
   <!-- Bread crumbs -->
   <div class="breads pull-right">
     <strong>Nav</strong> : <a href="/admins">Admin</a> / Employees
+
+    <a href="#" id="test">test</a>
   </div>
 @stop
 
@@ -56,7 +58,7 @@
 						<tr>
 							<td><input type="checkbox"></td>
 							<td>{{ $user->present()->fullName }}</td>
-							<td>{{ $user->team->abbr }}</td>
+							<td>{{ $user->team->abbrv }}</td>
 							<td>{{ $user->title }}</td>
 							<td>{{ $user->office->location }}</td>
 							<td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
