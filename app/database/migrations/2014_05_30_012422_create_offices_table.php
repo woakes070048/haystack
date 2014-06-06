@@ -18,7 +18,9 @@ class CreateOfficesTable extends Migration {
 
 			$table->string('location');
 			
+			$table->integer('created_by');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

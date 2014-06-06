@@ -1,19 +1,19 @@
 <?php namespace Admin;
 
 use Atticus\Repositories\User\UserInterface;
-use Atticus\Forms\Users\Create as CreateForm;
+use Atticus\Forms\Users\Save as SaveForm;
 use Input, Hash, View;
 
 class UsersController extends \BaseController {
 
 	protected $userRepo;
 
-	protected $createForm;
+	protected $saveForm;
 
-	public function __construct(UserInterface $user, CreateForm $create)
+	public function __construct(UserInterface $user, SaveForm $save)
 	{
 		$this->userRepo   = $user;
-		$this->createForm = $create;
+		$this->saveForm = $save;
 	}
 
 	/**
@@ -56,7 +56,7 @@ class UsersController extends \BaseController {
 	{
 		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'team_id', 'title', 'role');
 
-		$this->createForm->validate($input);
+		$this->saveForm->validate($input);
 
 		unset($input['role']);
 
@@ -101,7 +101,7 @@ class UsersController extends \BaseController {
 	{
 		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'team_id', 'title', 'role');
 
-		$this->createForm->validate($input);
+		$this->saveForm->validate($input);
 		
 		unset($input['role']);
 

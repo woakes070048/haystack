@@ -19,7 +19,8 @@ class CreateTeamsTable extends Migration {
 			$table->string('name');
 			$table->string('abbrv');
 			$table->string('practice');
-			
+
+			$table->integer('created_by');
 			$table->timestamps();
 			$table->softDeletes();
 		});

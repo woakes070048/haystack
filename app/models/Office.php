@@ -10,6 +10,10 @@ class Office extends \Eloquent {
 
 	protected $fillable = [];
 
+	protected $guarded = [];
+
+	protected $softDeletes = true;
+
 	public function employees()
 	{
 		return $this->hasMany('User');

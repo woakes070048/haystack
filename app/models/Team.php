@@ -10,6 +10,8 @@ class Team extends \Eloquent {
     
 	protected $fillable = [];
 
+	protected $guarded = [];
+
 	protected $softDeletes = true;
 
 	public function employees()
