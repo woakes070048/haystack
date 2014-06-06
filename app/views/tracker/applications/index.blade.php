@@ -56,7 +56,7 @@
 						<tr>
 							<td><input type="checkbox"></td>
 							<td>{{ $application->candidate->name }}</td>
-							<td>{{ $application->team->name }}</td>
+							<td>{{ $application->team->abbrv }}</td>
 							<td>{{ $application->preferred_title }}</td>
 							<td>{{ $application->office(1)->first()->location }}</td>
 							<td><a href="mailto:{{ $application->candidate->email }}">{{ $application->candidate->email }}</a></td>

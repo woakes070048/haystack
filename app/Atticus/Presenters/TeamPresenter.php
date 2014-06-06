@@ -9,4 +9,8 @@ class TeamPresenter extends Presenter {
         return $this->employees->count();
     }
 
+    public function applicationCount()
+    {
+        return $this->applications->count();
+    }
 }

@@ -18,9 +18,4 @@ class Team extends \Eloquent {
 	{
 		return $this->hasMany('User');
 	}
-
-	public function applicants()
-	{
-
-	}
 }

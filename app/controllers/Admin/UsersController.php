@@ -134,7 +134,20 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
-	}
+		$redirect = $this->redirectTo('/admin/users');
 
+		if ( Auth::user()->id === $id )
+		{
+			return $redirect->with('error', 'You cannot remove yourself');
+		}
+
+		$deleted = $this->userRepo->delete($id);
+
+		if ( $deleted )
+		{
+			return $redirect->with('success', 'Employee has been removed');
+		}
+
+		return $redirect->with('error', 'An error has occurred and we could not remove that employee');
+	}
 }

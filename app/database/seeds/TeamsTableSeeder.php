@@ -40,7 +40,5 @@ class TeamsTableSeeder extends Seeder {
 		{
 			Team::create($team);
 		}
-
 	}
-
 }
