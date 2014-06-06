@@ -1,19 +1,24 @@
 <?php namespace Admin;
 
 use Atticus\Repositories\User\UserInterface;
-use Atticus\Forms\Users\Save as SaveForm;
-use Input, Hash, View;
+use Atticus\Forms\Users\Create as CreateForm;
+use Atticus\Forms\Users\Update as UpdateForm;
+use Auth, Input, Hash, View;
 
 class UsersController extends \BaseController {
 
 	protected $userRepo;
 
-	protected $saveForm;
+	protected $createForm;
 
-	public function __construct(UserInterface $user, SaveForm $save)
+	protected $updateForm;
+
+	public function __construct(UserInterface $user, CreateForm $create, UpdateForm $update)
 	{
-		$this->userRepo   = $user;
-		$this->saveForm = $save;
+		$this->userRepo = $user;
+
+		$this->createForm = $create;
+		$this->updateForm = $update;
 	}
 
 	/**
@@ -56,7 +61,7 @@ class UsersController extends \BaseController {
 	{
 		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'team_id', 'title', 'role');
 
-		$this->saveForm->validate($input);
+		$this->createForm->validate($input);
 
 		unset($input['role']);
 
@@ -101,8 +106,14 @@ class UsersController extends \BaseController {
 	{
 		$input = Input::only('email', 'first_name', 'last_name', 'office_id', 'team_id', 'title', 'role');
 
-		$this->saveForm->validate($input);
-		
+		$this->updateForm->validate($input);
+
+		if ( $this->userRepo->alreadyExists($id, $input['email']) )
+		{
+			return $this->redirectBack()
+						->with('error', 'Email is already in use');
+		}
+
 		unset($input['role']);
 
 		$user = $this->userRepo->updateWithRole($id, $input, Input::get('role'));

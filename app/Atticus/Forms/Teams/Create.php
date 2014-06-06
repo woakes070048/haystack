@@ -10,8 +10,8 @@ class Create extends FormValidator {
      * @var array
      */
     protected $rules = [
-    	'name'  => 'required|unique:teams',
-        'abbrv' => 'required|unique:teams',
+    	'name'     => 'required|unique:teams',
+        'abbrv'    => 'required|unique:teams',
         'practice' => 'required'
     ];
 

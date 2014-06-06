@@ -13,6 +13,17 @@ class UserRepository extends DbRepository implements UserInterface {
 		$this->model = $model;
 	}
 
+	public function alreadyExists($id, $email)
+	{
+		$user  = $this->findById($id);
+		$other = $this->findByEmail($email);
+
+		if ( $user->email != $email && $other )
+		{
+			return true;
+		}
+	}
+
 	public function findByEmail($email)
 	{
 		return $this->model->where('email', '=', $email)->first();
