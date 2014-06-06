@@ -16,7 +16,7 @@ class TeamsTableSeeder extends Seeder {
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 
-		$flc   = [
+		$das   = [
 			'name' 	   => 'Dispute Advisory Services', 
 			'abbrv'    => 'DAS', 
 			'practice' => 'Forensic & Litigation Consulting'
@@ -34,7 +34,7 @@ class TeamsTableSeeder extends Seeder {
 			'practice' => 'Forensic & Litigation Consulting'
 		];
 
-		$teams = array($feda, $grip, $flc, $faas, $trial);
+		$teams = array($das, $grip, $faas, $feda, $trial);
 
 		foreach ($teams as $team) 
 		{
