@@ -22,7 +22,7 @@
 			<div class="widget pages-widget">
 											
 				<div class="widget-head br-lblue">
-					<h3><i class="fa fa-file"></i> View Teams</h3>
+					<h3><i class="fa fa-search"></i> View Teams</h3>
 				</div>
 				
 				<div class="widget-body no-padd">
@@ -56,7 +56,6 @@
 							</tbody>
 						</table>
 					</div>
-					
 				</div>
 				
 				<div class="widget-foot">
@@ -70,7 +69,7 @@
 			<div class="widget pages-widget">
 										
 				<div class="widget-head br-lblue">
-					<h3><i class="fa fa-file"></i> Create Team</h3>
+					<h3><i class="fa fa-plus"></i> Create Team</h3>
 				</div>
 			
 				<div class="widget-body">

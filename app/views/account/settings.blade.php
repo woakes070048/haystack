@@ -21,6 +21,50 @@
 			<div class="widget projects-widget">
 				
 				<div class="widget-head br-lblue">
+					<h3><i class="fa fa-user"></i> User Profile</h3>							
+				</div>
+				
+				<div class="widget-body">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="col-lg-3 control-label">Name</label>
+							<div class="col-lg-9">
+								<input type="text" value="{{ Auth::user()->present()->fullName }}" class="form-control" disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-3 control-label">Team</label>
+							<div class="col-lg-9">
+								<input type="text" value="{{ Auth::user()->team->name }}" class="form-control" disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-3 control-label">Title</label>
+							<div class="col-lg-9">
+								<input type="text" value="{{ Auth::user()->title }}" class="form-control" disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-3 control-label">Office</label>
+							<div class="col-lg-9">
+								<input type="text" value="{{ Auth::user()->office->location }}" class="form-control" disabled>
+							</div>
+						</div>	
+					</div>							
+				</div>
+				
+				<div class="widget-foot">
+					<p>&nbsp;</p>
+					<div class="clearfix"></div>
+				</div>
+			
+			</div>
+		</div>
+		<div class="col-md-6">
+			<!-- Project widget -->
+			<div class="widget projects-widget">
+				
+				<div class="widget-head br-lblue">
 					<h3><i class="fa fa-lock"></i> Change Password</h3>							
 				</div>
 				
@@ -49,7 +93,7 @@
 				</div>
 				
 				<div class="widget-foot">
-					<button type="submit" class="btn btn-info pull-right">Submit</button>
+					<button type="submit" class="btn btn-info pull-right">Change Password</button>
 					<div class="clearfix"></div>
 				</div>
 			
