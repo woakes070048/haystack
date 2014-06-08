@@ -20,7 +20,7 @@ class ApplicationRepository extends DbRepository implements ApplicationInterface
 
 		if ( $obj )
 		{
-			$obj->closed_by = Auth::user()->present()->fullName;
+			$obj->closed_by = Auth::user()->id;
 			$obj->closed_at = Carbon::now()->format('Y-m-d H:i:s');
 			$obj->save();
 		}
