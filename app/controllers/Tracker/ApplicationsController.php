@@ -53,8 +53,8 @@ class ApplicationsController extends \BaseController {
 				break;
 
 			case 'claimed':
-				$team_members = $this->userRepo->where('team_id', '=', Auth::user()->team_id)->pluck('id');
-				$applications = $this->appRepo->where('claimed_by', '=', $team_members);
+				$team_members = $this->userRepo->where('team_id', '=', Auth::user()->team_id)->lists('id');
+				$applications = $this->appRepo->whereIn('claimed_by', $team_members);
 				break;
 
 			default:

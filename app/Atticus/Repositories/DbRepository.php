@@ -76,6 +76,11 @@ abstract class DbRepository {
 		return $this->model->where($field, $operation, $parameter);
 	}
 
+	public function whereIn($field, array $input)
+	{
+		return $this->model->whereIn($field, $input);
+	}
+
 	public function orderBy($field, $order = 'desc')
 	{
 		return $this->model->orderBy($field, $order);

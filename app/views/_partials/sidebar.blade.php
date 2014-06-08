@@ -14,7 +14,7 @@
 				<h4>Applicant Tracker</h4>
 				<ul class="list-unstyled">
 					<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-					<li><a href="/applications"><i class="fa fa-user"></i> Applications</a></li>
+					<li><a href="/applications"><i class="fa fa-file-o"></i> Applications</a></li>
 				</ul>
 			</div>
 			@if ( $current_user->hasRole('admin') )
