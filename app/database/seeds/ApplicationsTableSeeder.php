@@ -41,14 +41,14 @@ class ApplicationsTableSeeder extends Seeder {
 			Tracker\Comment::create(array(
 				'user_id' 		 => 1,
 				'application_id' => $application->id,
-				'body' 	         => $faker->sentence($nbWords = 20)
+				'message' 	     => $faker->sentence($nbWords = 20)
 			));
 
 			for ($e=0; $e < $faker->numberBetween(3, 7) ; $e++) { 
 			 	Tracker\Comment::create(array(
 			 		'user_id' 		 => $faker->numberBetween(1,15),
 			 		'application_id' => $application->id,
-			 		'body' 	         => $faker->sentence($nbWords = 20)
+			 		'message' 	     => $faker->sentence($nbWords = 20)
 			 	));
 			}
 		}

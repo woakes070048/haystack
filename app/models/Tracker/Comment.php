@@ -17,6 +17,8 @@ class Comment extends \Eloquent {
 
 	protected $fillable = [];
 
+	protected $guarded = [];
+
 	public function application()
 	{
 		return $this->belongsTo('Tracker\Application');

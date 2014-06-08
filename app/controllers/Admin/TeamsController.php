@@ -53,6 +53,13 @@ class TeamsController extends \BaseController {
 
 	public function destroy($id)
 	{
+		$team = $this->teamRepo->findById($id);
+
+		if ( $team->name === "Unassigned" )
+		{
+			return $this->redirectBack()->with('error', 'Cannot delete Unassigned team');
+		}
+		
 		$deleted = $this->teamRepo->cascadingDelete($id);
 
 		if ( $deleted )

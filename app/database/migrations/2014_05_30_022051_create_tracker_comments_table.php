@@ -18,7 +18,7 @@ class CreateTrackerCommentsTable extends Migration {
 
 			$table->integer('application_id')->nullable();
 			$table->integer('user_id')->nullable();
-			$table->text('body')->nullable();
+			$table->text('message')->nullable();
 
 			$table->timestamps();
 		});

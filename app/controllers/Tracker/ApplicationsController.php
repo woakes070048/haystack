@@ -1,9 +1,9 @@
 <?php namespace Tracker;
 
 use Atticus\Repositories\Tracker\Application\ApplicationInterface;
-use Atticus\Forms\Tracker\Application\Create as ApplicationCreateForm;
+use Atticus\Forms\Tracker\Applications\Create as ApplicationCreateForm;
 use Atticus\Repositories\Tracker\Candidate\CandidateInterface;
-use Atticus\Forms\Tracker\Candidate\Create as CandidateCreateForm;
+use Atticus\Forms\Tracker\Candidates\Create as CandidateCreateForm;
 use Atticus\Repositories\User\UserInterface;
 use Auth, Input, Redirect, View;
 

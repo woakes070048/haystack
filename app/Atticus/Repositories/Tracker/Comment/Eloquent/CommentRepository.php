@@ -2,13 +2,13 @@
 
 use Atticus\Repositories\Tracker\Comment\CommentInterface;
 use Atticus\Repositories\DbRepository;
-use Comment;
+use Tracker\Comment as Comment;
 
 class CommentRepository extends DbRepository implements CommentInterface {
 
 	protected $model;
 
-	public function __construct(User $model)
+	public function __construct(Comment $model)
 	{
 		$this->model = $model;
 	}
