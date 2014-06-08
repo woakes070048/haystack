@@ -30,7 +30,6 @@
 							<tr> 
 								<th>Location</th>
 								<th>Employees</th>
-								<th>Applicants</th>
 								<th>Action</th>
 							</tr>
 
@@ -38,7 +37,6 @@
 							<tr>
 								<td>{{ $office->location }}</td>
 								<td>{{ $office->present()->employeeCount }}</td>
-								<td></td>
 								<td>
 									<a href="#"><i class="fa fa-edit lblue"></i></a> &nbsp; 
 									<a href="#"><i class="fa fa-trash-o red"></i></a>

@@ -74,7 +74,7 @@
 								<a href="/applications/{{ $application->id }}" class="btn btn-info btn-xs">
 									<i class="fa fa-info-circle"></i>
 								</a>
-								{{ Button::makeDelete($application->id, 'applications.destroy', 'fa-minus-circle') }} 
+								{{ Button::makeDelete($application->id, 'applications.destroy', 'btn btn-danger btn-xs', 'fa-minus-circle') }} 
 							</td>
 						</tr>
 						@endforeach

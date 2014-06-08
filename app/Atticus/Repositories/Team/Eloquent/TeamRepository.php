@@ -13,4 +13,22 @@ class TeamRepository extends DbRepository implements TeamInterface {
 		$this->model = $model;
 	}
 
+	public function cascadingDelete($id)
+	{
+		$team = $this->findById($id);
+
+		$unkn = $this->where('name', '=', 'Unassigned');
+
+		foreach ($team->employees as $employee) 
+		{
+			$employee->team_id = $unkn->first()->id;
+			$employee->save();
+		}
+
+		if ( $this->delete($id) )
+		{
+			return true;
+		}
+	}
+
 }

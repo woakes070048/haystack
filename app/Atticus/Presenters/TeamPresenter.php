@@ -2,11 +2,15 @@
 
 use Laracasts\Presenter\Presenter;
 
-class CommentPresenter extends Presenter {
+class TeamPresenter extends Presenter {
 
-    public function commentAge()
+    public function employeeCount()
     {
-        return $this->created_at->diffForHumans();
+        return $this->employees->count();
     }
 
+    public function applicationCount()
+    {
+        return $this->applications->count();
+    }
 }

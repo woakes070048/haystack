@@ -50,4 +50,16 @@ class TeamsController extends \BaseController {
 						->with('success', 'Team has been created');
 		}
 	}
+
+	public function destroy($id)
+	{
+		$deleted = $this->teamRepo->cascadingDelete($id);
+
+		if ( $deleted )
+		{
+			return $this->redirectBack()->with('success', 'Team has been removed');
+		}
+
+		return $this->redirectBack()->with('error', 'An error has occurred and we could not remove that team');
+	}
 }

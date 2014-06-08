@@ -23,7 +23,7 @@ class Dropdown {
 
 		$dropdown = "<select name='$name' class='$class'>";
 		foreach ($teams as $team) {
-			if ( $team->abbr === $old_input ) {
+			if ( $team->id === $old_input ) {
 				$dropdown = $dropdown . "<option selected='selected' value='$team->id'>$team->abbrv</option>";
 			} else {
 				$dropdown = $dropdown . "<option value='$team->id'>$team->abbrv</option>";				

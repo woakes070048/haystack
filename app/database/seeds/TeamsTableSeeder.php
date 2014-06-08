@@ -44,7 +44,15 @@ class TeamsTableSeeder extends Seeder {
 			'created_by' => $faker->numberBetween(1,6)
 		];
 
-		$teams = array($das, $grip, $faas, $feda, $trial);
+		$unassigned = [
+			'name' 	     => 'Unassigned', 
+			'abbrv'      => 'Unassigned', 
+			'practice'   => 'Unassigned',
+			'created_by' => $faker->numberBetween(1,6)
+
+		];
+
+		$teams = array($das, $grip, $faas, $feda, $trial, $unassigned);
 
 		foreach ($teams as $team) 
 		{

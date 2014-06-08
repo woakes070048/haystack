@@ -5,7 +5,7 @@ use Atticus\Forms\Tracker\Application\Create as ApplicationCreateForm;
 use Atticus\Repositories\Tracker\Candidate\CandidateInterface;
 use Atticus\Forms\Tracker\Candidate\Create as CandidateCreateForm;
 use Atticus\Repositories\User\UserInterface;
-use Auth, Input, View;
+use Auth, Input, Redirect, View;
 
 class ApplicationsController extends \BaseController {
 
@@ -142,7 +142,25 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$application = $this->appRepo->findById($id);
+
+		if ( $application->closed_at > '0000-00-00 00:00:00')
+		{
+			return $this->redirectBackWithMessage('error', 'Cannot edit closed application');
+		}
+
+		$a_input = Input::only('requisition_number', 'network_path', 'referring_employee',
+			'preferred_title', 'preferred_team', 'referring_employee', 'recruiting_contact',
+			'preferred_location1', 'preferred_location2', 'preferred_location3');
+
+		$this->applicationCreateForm->validate($a_input);
+
+		$application = $this->appRepo->update($id, $a_input);	
+
+		if ( $application )
+		{
+			return Redirect::back()->withApplication($application)->with('success', 'Application has been updated');
+		}
 	}
 
 	/**

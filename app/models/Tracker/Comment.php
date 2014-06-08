@@ -21,4 +21,9 @@ class Comment extends \Eloquent {
 	{
 		return $this->belongsTo('Tracker\Application');
 	}
+
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
 }
