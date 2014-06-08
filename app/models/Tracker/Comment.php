@@ -1,6 +1,20 @@
 <?php namespace Tracker;
 
+use Laracasts\Presenter\PresentableTrait;
+
 class Comment extends \Eloquent {
+
+	use PresentableTrait;
+
+    protected $presenter = 'CommentPresenter';
+
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'comments';
+
 	protected $fillable = [];
 
 	public function application()
