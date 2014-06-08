@@ -22,8 +22,8 @@ class UsersTableSeeder extends Seeder {
 	          'last_name'  => $last,
 	          'email'      => strtolower($first).".".strtolower($last)."@fticonsulting.com",
 	          'password'   => Hash::make('password1234'),
-	          'office_id'  => $faker->randomNumber(1,9),
-	          'team_id'	   => $faker->randomNumber(1,5),
+	          'office_id'  => $faker->numberBetween(1,9),
+	          'team_id'	   => $faker->numberBetween(1,5),
 	          'title'      => $title[array_rand($title)]
 			];
 
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder {
 
 			DB::table('role_user')->insert(array(
 				'user_id' => $created->id,
-				'role_id' => $faker->randomNumber(1, 3)
+				'role_id' => $faker->numberBetween(1, 3)
 			));			
 		}
 	}

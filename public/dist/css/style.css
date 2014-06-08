@@ -2451,8 +2451,8 @@ form label.error {
 .applicant-link {
 	color: #9a9a9a;
 }
-.applicant-link:hover {
-	color: #9a9a9a;
+.applicant-hover {
+	background-color: rgb(243, 243, 243);
 }
 .no-margin {
 	margin: 0 !important;

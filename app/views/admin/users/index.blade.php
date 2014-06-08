@@ -67,7 +67,7 @@
 							<td>
 								<a href="/admin/users/{{ $user->id }}/edit" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
 								@if ( $user->id != Auth::user()->id )
-									{{ Button::makeDelete($user->id) }} 
+									{{ Button::makeDelete($user->id, 'admin.users.destroy', 'fa-trash-o') }} 
 								@endif
 							</td>
 						</tr>
@@ -83,4 +83,36 @@
 		</div>
 	</div>
 </div>	
+@stop
+
+@section('javascripts')
+<script>
+  $(function(){
+  	$('[data-delete]').click(function(e){
+    	e.preventDefault();
+	    if (confirm('Do you really want to remove this user?')) {
+	        // Get the route URL
+	        var url = $(this).prop('href');
+	        // Get the token
+	        var token = $(this).data('delete');
+	        // Create a form element
+	        var $form = $('<form/>', {action: url, method: 'post'});
+	        // Add the DELETE hidden input method
+	        var $inputMethod = $('<input/>', {type: 'hidden', name: '_method', value: 'delete'});
+	        // Add the token hidden input
+	        var $inputToken = $('<input/>', {type: 'hidden', name: '_token', value: token});
+	        // Append the inputs to the form, hide the form, append the form to the <body>, SUBMIT !
+	        $form.append($inputMethod, $inputToken).hide().appendTo('body').submit();
+	    }	
+	});
+
+	$('td').click( function() {
+		if ( !$(this).hasClass('row-controls') ) {
+			window.location = $(this).parent().find('a').attr('href');
+		}
+	}).hover( function() {
+		$(this).toggleClass('hover');
+	});
+  });
+</script>
 @stop

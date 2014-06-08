@@ -6713,7 +6713,6 @@ a:hover, a:focus {
 a:hover, a:active, a:focus {
   outline: 0; }
 
-
 :focus {
   outline: none; }
 
@@ -8626,8 +8625,8 @@ form label.error {
 .applicant-link {
   color: #9a9a9a; }
 
-.applicant-link:hover {
-  color: #9a9a9a; }
+.applicant-hover {
+  background-color: #f3f3f3; }
 
 .no-margin {
   margin: 0 !important; }

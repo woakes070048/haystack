@@ -29,9 +29,12 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::resource('applications', 'Tracker\ApplicationsController');
+	Route::post('applications/reopen/{id}', 'ApplicationsController@reopen');
+
 	Route::resource('applications.comments', 'Tracker\ApplicationCommentsController');
 
 	Route::controller('account','AccountController');
+	Route::controller('support','SupportController');
 });
 
 Route::get('logout', 'SessionsController@destroy');

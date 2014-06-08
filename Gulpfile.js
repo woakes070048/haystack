@@ -57,12 +57,12 @@ gulp.task('scripts', function () {
     'public/vendor/bootstrap-datetimepicker/js/*.js',
     'public/vendor/wysihtml5/dist/wysihtml5-0.3.0.min.js',
     'public/vendor/bootstrap-wysihtml5/dist/bootstrap-wysihtml5-0.0.2.min.js',
-    // 'public/vendor/jquery.steps/build/jquery.steps.min.js',
-    // 'public/vendor/jquery.slimscroll/jquery.slimscroll.min.js',
-    // 'public/vendor/fullcalendar/fullcalendar.min.js',
-   //   'public/vendor/respond/dest/respond.min.js',
-    //  'public/vendor/html5shiv/dist/html5shiv.min.js',
-      'public/dist/js/custom.js'
+    //'public/vendor/jquery.steps/build/jquery.steps.min.js',
+    //'public/vendor/jquery.slimscroll/jquery.slimscroll.min.js',
+    //'public/vendor/fullcalendar/fullcalendar.min.js',
+    //'public/vendor/respond/dest/respond.min.js',
+    //'public/vendor/html5shiv/dist/html5shiv.min.js',
+    //'public/dist/js/custom.js'
   ])
   .pipe(concat('application.js'))
   .pipe(gulp.dest('public/dist/js'))

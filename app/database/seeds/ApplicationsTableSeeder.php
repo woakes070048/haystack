@@ -9,8 +9,8 @@ class ApplicationsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 		
-		$offices = DB::table('offices')->lists('location');
-		$teams   = DB::table('teams')->lists('name');		
+		$offices = DB::table('offices')->count();
+		$teams   = DB::table('teams')->count();		
 		$titles  = ['Consultant', 'Senior Consultant', 'Director'];
 
 		foreach(range(1, 8) as $index)
@@ -25,16 +25,17 @@ class ApplicationsTableSeeder extends Seeder {
 
 			$application = Tracker\Application::create([
 				'candidate_id'        => $candidate->id,
-				'requisition_number'  => $faker->randomNumber(3000, 3999),
-				'preferred_team'      => array_rand($teams),
+				'requisition_number'  => $faker->numberBetween(3000, 3999),
+				'preferred_team'      => $faker->numberBetween(1,$teams),
 				'preferred_title'     => $titles[array_rand($titles)],
 				'referring_employee'  => $faker->name,
 				'recruiting_contact'  => $faker->name,
-				'preferred_location1' => array_rand($offices),
-				'preferred_location2' => array_rand($offices),
-				'preferred_location2' => array_rand($offices),
+				'preferred_location1' => $faker->numberBetween(1,$offices),
+				'preferred_location2' => $faker->numberBetween(1,$offices),
+				'preferred_location2' => $faker->numberBetween(1,$offices),
 				'network_path'		  => '//us_midwest/chiflc/random_folder/path/to/resume',
-				'created_by'		  => $faker->randomNumber(1,6)
+				'created_by'		  => $faker->numberBetween(1,6),
+				'claimed_by'		  => $faker->numberBetween(0, 10)
 			]);
 
 		}

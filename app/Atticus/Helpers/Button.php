@@ -2,10 +2,10 @@
 
 class Button {
 
-	public static function makeDelete($id)
+	public static function makeDelete($id, $route, $icon)
 	{
-	    $format = '<a href="%s" data-toggle="tooltip" data-delete="%s" title="%s" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>';
-	    $link = URL::route('admin.users.destroy', ['id' => $id]);
+	    $format = '<a href="%s" data-toggle="tooltip" data-delete="%s" title="%s" class="btn btn-danger btn-xs"><i class="fa '.$icon.'"></i></a>';
+	    $link = URL::route($route, ['id' => $id]);
 	    $token = csrf_token();
 	    $title = "Delete this item";
 	    return sprintf($format, $link, $token, $title);

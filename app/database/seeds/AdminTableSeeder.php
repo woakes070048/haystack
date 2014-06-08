@@ -11,7 +11,7 @@ class AdminTableSeeder extends Seeder {
           'password'   => Hash::make('oi81.2'),
           'office_id'  => 1,
           'title'      => 'Consultant',
-          'team_id'	   => 1
+          'team_id'	   => 4
 		];
 		
 		$user = User::create($input);
