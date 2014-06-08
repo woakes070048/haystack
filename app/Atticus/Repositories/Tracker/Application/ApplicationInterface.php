@@ -2,5 +2,5 @@
 
 interface ApplicationInterface {
     
-
+	public function close($id);
 }

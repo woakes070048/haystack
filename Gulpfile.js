@@ -29,6 +29,7 @@ gulp.task('styles', function () {
   gulp.src([
     'public/vendor/bootstrap/dist/css/bootstrap.min.css',
     'public/vendor/components-font-awesome/css/font-awesome.min.css',
+    'public/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css',
     'public/dist/css/less-style.css',
     'public/dist/css/style.css'
    ])
@@ -54,6 +55,7 @@ gulp.task('scripts', function () {
   	'public/vendor/jquery/jquery.min.js',
     'public/vendor/bootstrap/dist/js/bootstrap.min.js',
     'public/vendor/jquery-ui/ui/jquery-ui.js',
+    'public/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js',
     'public/vendor/bootstrap-datetimepicker/js/*.js',
     'public/vendor/wysihtml5/dist/wysihtml5-0.3.0.min.js',
     'public/vendor/bootstrap-wysihtml5/dist/bootstrap-wysihtml5-0.0.2.min.js',

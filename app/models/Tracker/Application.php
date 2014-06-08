@@ -23,7 +23,7 @@ class Application extends \Eloquent {
 
 	public function comments()
 	{
-		return $this->hasMany('Tracker\Candidate');
+		return $this->hasMany('Tracker\Comment');
 	}
 
 	public function creator()

@@ -8,7 +8,7 @@ class Dropdown {
 
 		$dropdown = "<select name='$name' class='$class'>";
 		foreach ($offices as $office) {
-			if ( $office->location === $old_input ) {
+			if ( $office->id === $old_input ) {
 				$dropdown = $dropdown . "<option selected='selected' value='$office->id'>$office->location</option>";
 			} else {
 				$dropdown = $dropdown . "<option value='$office->id'>$office->location</option>";				

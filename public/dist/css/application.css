@@ -6184,6 +6184,47 @@ button.close {
 .fa-bomb:before {
   content: "\f1e2"; }
 
+.multiselect-container {
+  position: absolute;
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.multiselect-container .input-group {
+  margin: 5px; }
+
+.multiselect-container > li {
+  padding: 0; }
+
+.multiselect-container > li > a.multiselect-all label {
+  font-weight: 700; }
+
+.multiselect-container > li > label.multiselect-group {
+  margin: 0;
+  padding: 3px 20px;
+  height: 100%;
+  font-weight: 700; }
+
+.multiselect-container > li > a {
+  padding: 0; }
+
+.multiselect-container > li > a > label {
+  margin: 0;
+  height: 100%;
+  cursor: pointer;
+  font-weight: 400;
+  padding: 3px 20px 3px 40px; }
+
+.multiselect-container > li > a > label.radio, .multiselect-container > li > a > label.checkbox {
+  margin: 0; }
+
+.multiselect-container > li > a > label > input[type=checkbox] {
+  margin-bottom: 5px; }
+
+.btn-group > .btn-group:nth-child(2) > .multiselect.btn {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
 /********************/
 /* Custom LESS File */
 /********************/
@@ -8630,3 +8671,13 @@ form label.error {
 
 .no-margin {
   margin: 0 !important; }
+
+.multiselect {
+  text-align: left;
+  color: #9a9a9a;
+  font-size: 12px; }
+
+.multiselect b.caret {
+  position: absolute;
+  top: 14px;
+  right: 21px; }

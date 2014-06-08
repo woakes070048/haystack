@@ -13,4 +13,16 @@ class CandidateRepository extends DbRepository implements CandidateInterface {
 		$this->model = $model;
 	}
 
+	public function firstOrCreateByEmail($email, array $input)
+	{
+		$candidate = $this->model->where('email', '=', $email)->first();
+
+		if ( !$candidate )
+		{
+        	$candidate = $this->create($input);
+		}
+
+		return $candidate;
+	}
+
 }

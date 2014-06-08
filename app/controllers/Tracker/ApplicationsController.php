@@ -1,7 +1,9 @@
 <?php namespace Tracker;
 
 use Atticus\Repositories\Tracker\Application\ApplicationInterface;
+use Atticus\Forms\Tracker\Application\Create as ApplicationCreateForm;
 use Atticus\Repositories\Tracker\Candidate\CandidateInterface;
+use Atticus\Forms\Tracker\Candidate\Create as CandidateCreateForm;
 use Atticus\Repositories\User\UserInterface;
 use Auth, Input, View;
 
@@ -13,13 +15,23 @@ class ApplicationsController extends \BaseController {
 
 	protected $userRepo;
 
-	public function __construct(ApplicationInterface $app, CandidateInterface $candidate, UserInterface $user)
+	protected $applicationCreateForm;
+
+	protected $candidateCreateForm;
+
+	public function __construct(
+		ApplicationInterface $app, CandidateInterface $candidate, 
+		UserInterface $user, ApplicationCreateForm $aCreate, CandidateCreateForm $cCreate)
 	{
 	    $this->appRepo = $app;
 
 	    $this->candidateRepo = $candidate;
 
 	    $this->userRepo = $user;
+
+	    $this->applicationCreateForm = $aCreate;
+
+	    $this->candidateCreateForm = $cCreate;
 	}
 
 	/**
@@ -63,7 +75,7 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('tracker.applications.create');
 	}
 
 	/**
@@ -73,7 +85,30 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$c_input = Input::only('name', 'email');
+
+		$this->candidateCreateForm->validate($c_input);
+
+		$candidate = $this->candidateRepo->firstOrCreateByEmail($c_input['email'], $c_input);
+
+		$a_input = Input::only('requisition_number', 'network_path', 'referring_employee',
+			'preferred_title', 'preferred_team', 'referring_employee', 'recruiting_contact',
+			'preferred_location1', 'preferred_location2', 'preferred_location3');
+
+		$this->applicationCreateForm->validate($a_input);
+
+		$meta = [
+			'candidate_id' => $candidate->id,
+			'created_by'   => Auth::user()->id
+		];
+
+		$application = $this->appRepo->create(array_merge($a_input, $meta));
+
+		if ( $application )
+		{   
+			return $this->redirectTo('/applications')
+						->with('success', 'Application has been created');
+		}
 	}
 
 	/**
@@ -94,18 +129,9 @@ class ApplicationsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-	}
+		$application = $this->appRepo->findById($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
+		return View::make('tracker.applications.show')->withApplication($application);
 	}
 
 	/**

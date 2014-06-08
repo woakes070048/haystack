@@ -11,7 +11,7 @@ class OfficesTableSeeder extends Seeder {
 			Office::create(array(
 				'location' => $office
 			));
-		}		
+		}	
 	}
 
 }

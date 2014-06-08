@@ -2457,3 +2457,13 @@ form label.error {
 .no-margin {
 	margin: 0 !important;
 }
+.multiselect {
+  text-align: left;
+  color: #9a9a9a;
+  font-size: 12px;
+}
+.multiselect b.caret {
+  position: absolute;
+  top: 14px;
+  right: 21px;
+}
