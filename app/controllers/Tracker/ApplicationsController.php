@@ -186,6 +186,15 @@ class ApplicationsController extends \BaseController {
 
 	public function reopen($id)
 	{
-		
+		$reopened = $this->appRepo->reopen($id);
+
+		if ( $reopened )
+		{
+			return $this->redirectTo('/applications/' . $id)
+						->with('success', 'Application has been reopened');
+		}
+
+		return $this->redirectTo('/applications')
+					->with('error', 'An error has occurred and we could not reopen that application');		
 	}
 }

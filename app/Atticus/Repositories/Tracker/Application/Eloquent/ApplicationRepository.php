@@ -27,4 +27,17 @@ class ApplicationRepository extends DbRepository implements ApplicationInterface
 		
 		return $obj;
 	}
+
+	public function reopen($id)
+	{
+		$obj = $this->model->find($id);
+
+		if ( $obj )
+		{
+			$obj->closed_by = '';
+			$obj->closed_at = '0000-00-00 00:00:00';
+			$obj->save();
+		}
+		return $obj;		
+	}
 }

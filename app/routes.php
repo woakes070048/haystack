@@ -29,7 +29,7 @@ Route::group(array('before' => 'auth'), function()
 	});
 
 	Route::resource('applications', 'Tracker\ApplicationsController');
-	Route::post('applications/reopen/{id}', 'ApplicationsController@reopen');
+	Route::post('applications/reopen/{id}', 'Tracker\ApplicationsController@reopen');
 
 	Route::resource('applications.comments', 'Tracker\ApplicationCommentsController');
 
