@@ -23,6 +23,14 @@ class ApplicationsTableSeeder extends Seeder {
 				'email' => lcfirst($first).'.'.lcfirst($last)."@gmail.com"
 			]);
 
+			$claimed_by = $faker->numberBetween(0, 10);
+
+			if ( $claimed_by != 0 ) {
+				$claimed_at = Carbon::now();
+			} else {
+				$claimed_at = '0000-00-00 00:00:00';
+			}
+
 			$application = Tracker\Application::create([
 				'candidate_id'        => $candidate->id,
 				'requisition_number'  => $faker->numberBetween(3000, 3999),
@@ -35,7 +43,8 @@ class ApplicationsTableSeeder extends Seeder {
 				'preferred_location2' => $faker->numberBetween(1,$offices),
 				'network_path'		  => '//us_midwest/chiflc/random_folder/path/to/resume',
 				'created_by'		  => $faker->numberBetween(1,6),
-				'claimed_by'		  => $faker->numberBetween(0, 10)
+				'claimed_by'		  => $claimed_by,
+				'claimed_at'		  => $claimed_at
 			]);
 
 			Tracker\Comment::create(array(

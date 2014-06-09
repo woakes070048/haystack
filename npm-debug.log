@@ -1,0 +1,85 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'gulp-notify-send',
+1 verbose cli   '--save' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 verbose node symlink /usr/bin/node
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'gulp-notify-send', null ]
+7 verbose cache add name=undefined spec="gulp-notify-send" args=["gulp-notify-send",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'gulp-notify-send',
+8 verbose parsed url   path: 'gulp-notify-send',
+8 verbose parsed url   href: 'gulp-notify-send' }
+9 silly lockFile ccc230aa-gulp-notify-send gulp-notify-send
+10 verbose lock gulp-notify-send /home/vagrant/.npm/ccc230aa-gulp-notify-send.lock
+11 silly lockFile ccc230aa-gulp-notify-send gulp-notify-send
+12 silly lockFile ccc230aa-gulp-notify-send gulp-notify-send
+13 verbose addNamed [ 'gulp-notify-send', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile b3fda2ca-gulp-notify-send gulp-notify-send@
+16 verbose lock gulp-notify-send@ /home/vagrant/.npm/b3fda2ca-gulp-notify-send.lock
+17 silly addNameRange { name: 'gulp-notify-send', range: '*', hasData: false }
+18 verbose url raw gulp-notify-send
+19 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-notify-send' ]
+20 verbose url resolved https://registry.npmjs.org/gulp-notify-send
+21 info trying registry request attempt 1 at 23:02:25
+22 http GET https://registry.npmjs.org/gulp-notify-send
+23 http 404 https://registry.npmjs.org/gulp-notify-send
+24 verbose headers { date: 'Sat, 07 Jun 2014 23:08:03 GMT',
+24 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+24 verbose headers   'content-type': 'application/json',
+24 verbose headers   via: '1.1 varnish',
+24 verbose headers   'cache-control': 'max-age=0',
+24 verbose headers   'content-length': '52',
+24 verbose headers   'accept-ranges': 'bytes',
+24 verbose headers   age: '0',
+24 verbose headers   'x-served-by': 'cache-sv61-SJC3, cache-ord1726-ORD',
+24 verbose headers   'x-cache': 'MISS, MISS',
+24 verbose headers   'x-cache-hits': '0, 0',
+24 verbose headers   'x-timer': 'S1402182483.144894,VS0,VE97',
+24 verbose headers   'keep-alive': 'timeout=10, max=50',
+24 verbose headers   connection: 'Keep-Alive' }
+25 silly registry.get cb [ 404,
+25 silly registry.get   { date: 'Sat, 07 Jun 2014 23:08:03 GMT',
+25 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+25 silly registry.get     'content-type': 'application/json',
+25 silly registry.get     via: '1.1 varnish',
+25 silly registry.get     'cache-control': 'max-age=0',
+25 silly registry.get     'content-length': '52',
+25 silly registry.get     'accept-ranges': 'bytes',
+25 silly registry.get     age: '0',
+25 silly registry.get     'x-served-by': 'cache-sv61-SJC3, cache-ord1726-ORD',
+25 silly registry.get     'x-cache': 'MISS, MISS',
+25 silly registry.get     'x-cache-hits': '0, 0',
+25 silly registry.get     'x-timer': 'S1402182483.144894,VS0,VE97',
+25 silly registry.get     'keep-alive': 'timeout=10, max=50',
+25 silly registry.get     connection: 'Keep-Alive' } ]
+26 silly lockFile b3fda2ca-gulp-notify-send gulp-notify-send@
+27 silly lockFile b3fda2ca-gulp-notify-send gulp-notify-send@
+28 error 404 404 Not Found: gulp-notify-send
+28 error 404
+28 error 404 'gulp-notify-send' is not in the npm registry.
+28 error 404 You should bug the author to publish it
+28 error 404 It was specified as a dependency of 'haystack'
+28 error 404
+28 error 404 Note that you can also install from a
+28 error 404 tarball, folder, or http url, or git url.
+29 error System Linux 3.13.0-24-generic
+30 error command "/usr/bin/node" "/usr/bin/npm" "install" "gulp-notify-send" "--save"
+31 error cwd /vagrant/haystack
+32 error node -v v0.10.28
+33 error npm -v 1.4.9
+34 error code E404
+35 verbose exit [ 1, true ]

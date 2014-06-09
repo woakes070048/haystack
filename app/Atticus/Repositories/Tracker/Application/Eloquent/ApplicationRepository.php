@@ -40,4 +40,5 @@ class ApplicationRepository extends DbRepository implements ApplicationInterface
 		}
 		return $obj;		
 	}
+
 }

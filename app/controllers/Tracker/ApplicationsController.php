@@ -197,4 +197,5 @@ class ApplicationsController extends \BaseController {
 		return $this->redirectTo('/applications')
 					->with('error', 'An error has occurred and we could not reopen that application');		
 	}
+
 }
