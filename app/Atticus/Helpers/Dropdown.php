@@ -14,6 +14,7 @@ class Dropdown {
 				$dropdown = $dropdown . "<option value='$office->id'>$office->location</option>";				
 			}
 		}
+		
 		return $dropdown . '</select>';
 	}
 

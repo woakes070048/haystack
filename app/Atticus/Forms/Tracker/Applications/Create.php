@@ -16,7 +16,7 @@ class Create extends FormValidator {
         'preferred_location1' => 'required|integer|exists:offices,id',
         'preferred_location2' => 'required|integer|exists:offices,id',
         'preferred_location3' => 'required|integer|exists:offices,id',
-        'referring_employee'  => 'required|alpha_spaces|max:100',
+        'referring_employee'  => 'alpha_spaces|max:100',
         'recruiting_contact'  => 'required|alpha_spaces|max:100',
         'network_path'        => 'required',
     ];

@@ -36,74 +36,74 @@
 					{{ Form::open(array('url' => "applications/$application->id", 'class' => 'form-horizontal', 'method' => 'put')) }}
 
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Name</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Name</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" value="{{ $application->candidate->name }}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Email</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Email</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" value="{{ $application->candidate->email }}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Requisition Number</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Requisition Number</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" name="requisition_number" value="{{ $application->requisition_number }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Preferred Position</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Preferred Position</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" name="preferred_title" value="{{ $application->preferred_title }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Preferred Team</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Preferred Team</label>
+							<div class="col-lg-8">
 								{{ Dropdown::teams('preferred_team', 'form-control', $application->preferred_team) }}
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Preferred Locations</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Preferred Locations</label>
+							<div class="col-lg-8">
 								{{ Dropdown::offices('preferred_location1', 'form-control', $application->preferred_location1) }}
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">&nbsp;</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">&nbsp;</label>
+							<div class="col-lg-8">
 								{{ Dropdown::offices('preferred_location2', 'form-control', $application->preferred_location2) }}
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">&nbsp;</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">&nbsp;</label>
+							<div class="col-lg-8">
 								{{ Dropdown::offices('preferred_location3', 'form-control', $application->preferred_location3) }}
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Referring Employee</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Referring Employee</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" name="referring_employee" value="{{ $application->referring_employee }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Recruiting Contact</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Recruiting Contact</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" name="recruiting_contact" value="{{ $application->recruiting_contact }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Resume Path</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Resume Path</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" name="network_path" value="{{ $application->network_path }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-5 control-label">Created By</label>
-							<div class="col-lg-7">
+							<label class="col-lg-4 control-label">Created By</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" value="{{ $application->creator->present()->fullName }}" disabled>
 							</div>
 						</div>					
