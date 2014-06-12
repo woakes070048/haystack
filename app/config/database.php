@@ -51,17 +51,18 @@ return array(
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
-
+		
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '127.0.0.1',
-			'database'  => 'haystack',
-			'username'  => 'root',
-			'password'  => 'root',
+			'host'      => isset($_SERVER['DB1_HOST']) ? $_SERVER['DB1_HOST'] : '127.0.0.1',
+			'database'  => isset($_SERVER['DB1_NAME']) ? $_SERVER['DB1_NAME'] : 'haystack',
+			'username'  => isset($_SERVER['DB1_USER']) ? $_SERVER['DB1_USER'] : 'root',
+			'password'  => isset($_SERVER['DB1_PASS']) ? $_SERVER['DB1_PASS'] : 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
