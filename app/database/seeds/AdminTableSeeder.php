@@ -4,6 +4,8 @@ class AdminTableSeeder extends Seeder {
 
 	public function run()
 	{
+		$team = Team::where('abbrv', ,'=', 'FEDA')->first();
+
 		$input = [
           'first_name' => 'Scott',
           'last_name'  => 'Cruwys',
@@ -11,7 +13,7 @@ class AdminTableSeeder extends Seeder {
           'password'   => Hash::make('oi81.2'),
           'office_id'  => 1,
           'title'      => 'Consultant',
-          'team_id'	   => 4
+          'team_id'	   => $team->id
 		];
 		
 		$user = User::create($input);
