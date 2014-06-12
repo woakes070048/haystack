@@ -4,7 +4,7 @@ class AdminTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$team = Team::where('abbrv', ,'=', 'FEDA')->first();
+		$team = Team::where('abbrv', '=', 'FEDA')->first();
 
 		$input = [
           'first_name' => 'Scott',
