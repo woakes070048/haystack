@@ -132,11 +132,10 @@
 				
 				<div class="widget-body">
 					<ul id="myTab" class="nav nav-tabs">
-						<li class="active"><a href="#one" data-toggle="tab">Phone Screen</a></li>
-						<li class=""><a href="#two" data-toggle="tab">Profile</a></li>
-						<li class=""><a href="#three" data-toggle="tab">Content</a></li>
-						<li class=""><a href="#three" data-toggle="tab">Content</a></li>
-						<li class=""><a href="#three" data-toggle="tab">Content</a></li>
+						<li class="active"><a href="#one" data-toggle="tab">Screening</a></li>
+						<li class=""><a href="#two" data-toggle="tab">Phone Interview</a></li>
+						<li class=""><a href="#three" data-toggle="tab">Office Visit</a></li>
+						<li class=""><a href="#three" data-toggle="tab">Decision</a></li>
 					</ul>
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane fade" id="one">
