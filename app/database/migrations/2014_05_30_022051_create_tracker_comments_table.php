@@ -17,6 +17,7 @@ class CreateTrackerCommentsTable extends Migration {
 			$table->increments('id');
 
 			$table->integer('application_id')->nullable();
+			$table->integer('application_step')->default(1);
 			$table->integer('user_id')->nullable();
 			$table->text('message')->nullable();
 
