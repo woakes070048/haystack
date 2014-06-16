@@ -11,16 +11,16 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
+		$this->call('RolesTableSeeder');
+		$this->call('TeamsTableSeeder');
+		$this->call('OfficesTableSeeder');
+		$this->call('AdminTableSeeder');
+
 		if ( !isset($_SERVER['DB1_HOST']) )
 		{
 			$this->call('UsersTableSeeder');
 			$this->call('ApplicationsTableSeeder');
 		}
-
-		$this->call('RolesTableSeeder');
-		$this->call('TeamsTableSeeder');
-		$this->call('OfficesTableSeeder');
-		$this->call('AdminTableSeeder');
 	}
 
 }

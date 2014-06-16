@@ -19,7 +19,7 @@ class CreateTrackerApplicationsTable extends Migration {
 
 			$table->integer('requisition_number');
 
-			$table->integer('interview_step')->default(0);
+			$table->integer('interview_step')->default(1);
 			
 			$table->string('preferred_title');
 			$table->integer('preferred_team');
