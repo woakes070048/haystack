@@ -12,9 +12,13 @@ class CreateTrackerApplicationTrackingTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tracker_application_tracking', function(Blueprint $table)
+		Schema::create('application_tracking', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('application_id');
+
+			$table->integer('approver');
+			
 			$table->timestamps();
 		});
 	}
@@ -27,7 +31,7 @@ class CreateTrackerApplicationTrackingTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tracker_application_tracking');
+		Schema::drop('application_tracking');
 	}
 
 }

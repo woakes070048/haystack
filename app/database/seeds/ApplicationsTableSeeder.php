@@ -23,7 +23,7 @@ class ApplicationsTableSeeder extends Seeder {
 				'email' => lcfirst($first).'.'.lcfirst($last)."@gmail.com"
 			]);
 
-			$claimed_by = $faker->numberBetween(0, 10);
+			$claimed_by = $faker->numberBetween(0, 5);
 
 			if ( $claimed_by != 0 ) {
 				$claimed_at = Carbon::now();

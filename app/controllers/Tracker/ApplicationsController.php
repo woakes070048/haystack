@@ -2,10 +2,11 @@
 
 use Atticus\Repositories\Tracker\Application\ApplicationInterface;
 use Atticus\Forms\Tracker\Applications\Create as ApplicationCreateForm;
+use Atticus\Forms\Tracker\Applications\Update as ApplicationUpdateForm;
 use Atticus\Repositories\Tracker\Candidate\CandidateInterface;
 use Atticus\Forms\Tracker\Candidates\Create as CandidateCreateForm;
 use Atticus\Repositories\User\UserInterface;
-use Auth, Input, Redirect, View;
+use Auth, Carbon, Input, Redirect, View;
 
 class ApplicationsController extends \BaseController {
 
@@ -17,10 +18,12 @@ class ApplicationsController extends \BaseController {
 
 	protected $applicationCreateForm;
 
+	protected $applicationUpdateForm;
+
 	protected $candidateCreateForm;
 
 	public function __construct(
-		ApplicationInterface $app, CandidateInterface $candidate, 
+		ApplicationInterface $app, CandidateInterface $candidate, ApplicationUpdateForm $aUpdate,
 		UserInterface $user, ApplicationCreateForm $aCreate, CandidateCreateForm $cCreate)
 	{
 	    $this->appRepo = $app;
@@ -30,6 +33,8 @@ class ApplicationsController extends \BaseController {
 	    $this->userRepo = $user;
 
 	    $this->applicationCreateForm = $aCreate;
+
+	    $this->applicationUpdateForm = $aUpdate;
 
 	    $this->candidateCreateForm = $cCreate;
 	}
@@ -151,11 +156,17 @@ class ApplicationsController extends \BaseController {
 
 		$a_input = Input::only('requisition_number', 'network_path', 'referring_employee',
 			'preferred_title', 'preferred_team', 'referring_employee', 'recruiting_contact',
-			'preferred_location1', 'preferred_location2', 'preferred_location3');
+			'preferred_location1', 'preferred_location2', 'preferred_location3', 'claimed_by');
 
-		$this->applicationCreateForm->validate($a_input);
+		$this->applicationUpdateForm->validate($a_input);
 
-		$application = $this->appRepo->update($id, $a_input);	
+		if ( $application->claimed_by != $a_input['claimed_by'] )
+		{
+			$a_input['claimed_at'] = Carbon::now();
+			$a_input['updated_by'] = Auth::user()->id;
+		}
+
+		$application = $this->appRepo->update($id, $a_input);
 
 		if ( $application )
 		{
@@ -196,6 +207,45 @@ class ApplicationsController extends \BaseController {
 
 		return $this->redirectTo('/applications')
 					->with('error', 'An error has occurred and we could not reopen that application');		
+	}
+
+	public function advance($id)
+	{
+       $application = $this->appRepo->findById($id);
+
+       switch ( $application->interview_step ) 
+       {
+       	case 1:
+       		if ( $application->claimed_by === 0) 
+       		{
+       			$this->appRepo->claim($id);
+       		} 
+       		else 
+       		{
+       			$application = $this->appRepo->moveForwardOneStep($id);
+       		}
+       		break;
+       	
+       	case 2:
+       		$application = $this->appRepo->moveForwardOneStep($id);
+       		break;
+
+       	case 3:
+       		$application = $this->appRepo->moveForwardOneStep($id);
+       		break;
+
+       	case 4:
+       		# code...
+       		$application = $this->appRepo->close($id);
+       		break;
+       }
+
+       if ( $errors )
+       {
+
+       }
+
+       return $this->redirectBack()->with('success', 'Application has been moved forward');
 	}
 
 }

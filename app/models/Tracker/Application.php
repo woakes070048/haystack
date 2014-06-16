@@ -33,7 +33,7 @@ class Application extends \Eloquent {
 
 	public function claimer()
 	{
-		return $this->hasOne('User', 'id', 'claimed_by');
+		return $this->hasOne('Team', 'id', 'claimed_by');
 	}
 
 	public function closer()

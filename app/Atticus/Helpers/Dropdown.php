@@ -8,7 +8,7 @@ class Dropdown {
 
 		$dropdown = "<select name='$name' class='$class'>";
 		foreach ($offices as $office) {
-			if ( $office->id === $old_input ) {
+			if ( (int) $office->id === (int) $old_input ) {
 				$dropdown = $dropdown . "<option selected='selected' value='$office->id'>$office->location</option>";
 			} else {
 				$dropdown = $dropdown . "<option value='$office->id'>$office->location</option>";				
@@ -23,8 +23,9 @@ class Dropdown {
 		$teams = Team::all();
 
 		$dropdown = "<select name='$name' class='$class'>";
+
 		foreach ($teams as $team) {
-			if ( $team->id === $old_input ) {
+			if ( (int) $team->id === (int) $old_input ) {
 				$dropdown = $dropdown . "<option selected='selected' value='$team->id'>$team->abbrv</option>";
 			} else {
 				$dropdown = $dropdown . "<option value='$team->id'>$team->abbrv</option>";				
@@ -33,7 +34,22 @@ class Dropdown {
 		return $dropdown . '</select>';
 	}
 
-	public static function roles($name, $class, $old_input)
+	public static function existing_teams_only($name, $class, $old_input)
+	{
+		$teams = Team::where('name', '!=', 'Unassigned')->get();
+
+		$dropdown = "<select name='$name' class='$class'>";
+		foreach ($teams as $team) {
+			if ( (int) $team->id === (int) $old_input ) {
+				$dropdown = $dropdown . "<option selected='selected' value='$team->id'>$team->abbrv</option>";
+			} else {
+				$dropdown = $dropdown . "<option value='$team->id'>$team->abbrv</option>";				
+			}
+		}
+		return $dropdown . '</select>';
+	}
+
+	public static function roles($name, $class, $old_input = 1)
 	{
 		$roles = Role::all();
 

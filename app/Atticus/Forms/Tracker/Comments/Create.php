@@ -10,7 +10,8 @@ class Create extends FormValidator {
      * @var array
      */
     protected $rules = [
-    	'message' => 'required|between:1,600'
+    	'message'        => 'required|between:1,600',
+    	'interview_step' => 'required|between:1,4'
     ];
 
 }

@@ -2467,3 +2467,6 @@ form label.error {
   top: 14px;
   right: 21px;
 }
+.no-padd {
+	padding: 0 !important;
+}

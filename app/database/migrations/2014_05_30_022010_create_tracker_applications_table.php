@@ -39,6 +39,8 @@ class CreateTrackerApplicationsTable extends Migration {
 			$table->integer('closed_by');
 			$table->timestamp('closed_at');
 
+			$table->integer('updated_by');
+
 			$table->integer('created_by');
 			$table->timestamps();
 		});

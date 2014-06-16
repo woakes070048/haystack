@@ -67,7 +67,7 @@
 							<td>{{ ( $application->closed_at != "0000-00-00 00:00:00" ) ? $application->closed_at : " " }}</td>
 							<td>
 								@if($application->claimer)
-									{{ $application->claimer->team->abbrv }}
+									{{ $application->claimer->abbrv }}
 								@endif
 							</td>
 							<td class="action-controls">

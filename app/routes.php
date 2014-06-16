@@ -31,6 +31,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('applications', 'Tracker\ApplicationsController');
 	Route::post('applications/{id}/reopen', 'Tracker\ApplicationsController@reopen');
 	Route::post('applications/{id}/cancel', 'Tracker\ApplicationsController@cancel');
+	Route::post('applications/{id}/advance', 'Tracker\ApplicationsController@advance');
 
 	Route::resource('applications.comments', 'Tracker\ApplicationCommentsController');
 

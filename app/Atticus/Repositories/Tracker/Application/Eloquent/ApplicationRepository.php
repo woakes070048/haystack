@@ -28,6 +28,20 @@ class ApplicationRepository extends DbRepository implements ApplicationInterface
 		return $obj;
 	}
 
+	public function claim($id)
+	{
+		$obj = $this->model->find($id);
+
+		if ( $obj )
+		{
+			$obj->claimed_by = Auth::user()->team->id;
+			$obj->claimed_at = Carbon::now()->format('Y-m-d H:i:s');
+			$obj->save();
+		}
+		
+		return $obj;
+	}	
+
 	public function reopen($id)
 	{
 		$obj = $this->model->find($id);
@@ -39,6 +53,18 @@ class ApplicationRepository extends DbRepository implements ApplicationInterface
 			$obj->save();
 		}
 		return $obj;		
+	}
+
+	public function moveForwardOneStep($id)
+	{
+		$obj = $this->model->find($id);
+
+		if ( $obj )
+		{
+			$obj->interview_step++;
+			$obj->save();
+		}
+		return $obj;	
 	}
 
 }

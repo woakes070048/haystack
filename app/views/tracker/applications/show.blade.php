@@ -27,20 +27,30 @@
 					</h3>
 					@if ( $application->claimed_at > '0000-00-00 00:00:00' )
 						<span class="label label-warning pull-right">
-							Interviewing with {{ $application->claimer->team->abbrv }}
+							Interviewing with {{ $application->claimer->abbrv }}
 						</span>
 					@endif
 				</div>
 				
 				<div class="widget-body">
 					{{ Form::open(array('url' => "applications/$application->id", 'class' => 'form-horizontal', 'method' => 'put')) }}
-
+						<div class="form-group">
+							<label class="col-lg-4 control-label">Interviewer</label>
+							<div class="col-lg-8">
+								@if ( $application->claimed_at > '0000-00-00 00:00:00' )
+									{{ Dropdown::existing_teams_only('claimed_by', 'form-control', $application->claimer->id) }}
+								@else
+									{{ Dropdown::teams('claimed_by', 'form-control', 6) }}
+								@endif
+							</div>
+						</div>
 						<div class="form-group">
 							<label class="col-lg-4 control-label">Name</label>
 							<div class="col-lg-8">
 								<input type="text" class="form-control" value="{{ $application->candidate->name }}" disabled>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<label class="col-lg-4 control-label">Email</label>
 							<div class="col-lg-8">
@@ -115,7 +125,7 @@
 				</div>
 
 				{{ Form::close() }}
-				
+
 			</div>			
 		</div>
 
@@ -131,26 +141,26 @@
 				</div>
 				
 				<div class="widget-body">
-					<ul id="myTab" class="nav nav-tabs">
-						<li class="active"><a href="#one" data-toggle="tab">Screening</a></li>
-						<li class=""><a href="#two" data-toggle="tab">Phone Interview</a></li>
-						<li class=""><a href="#three" data-toggle="tab">Office Visit</a></li>
-						<li class=""><a href="#three" data-toggle="tab">Decision</a></li>
+					<ul id="interviewSteps" class="nav nav-tabs">
+						<li class="" id="tab-one"><a href="#one" data-toggle="tab">Screening</a></li>
+						<li class="" id="tab-two"><a href="#two" data-toggle="tab">Phone Interview</a></li>
+						<li class="" id="tab-three"><a href="#three" data-toggle="tab">Office Visit</a></li>
+						<li class="" id="tab-four"><a href="#four" data-toggle="tab">Decision</a></li>
 					</ul>
-					<div id="myTabContent" class="tab-content">
+					<div id="interviewStepsContent" class="tab-content">
 						<div class="tab-pane fade" id="one">
-							<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+							<p>One</p>
 						</div>
 						<div class="tab-pane fade" id="two">
 							<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four.</p>
 						</div>
-						<div class="tab-pane fade active in" id="three">
+						<div class="tab-pane fade" id="three">
 							<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer.</p>
 						</div>
-						<div class="tab-pane fade active in" id="four">
+						<div class="tab-pane fade" id="four">
 							<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer.</p>
 						</div>
-						<div class="tab-pane fade active in" id="five">
+						<div class="tab-pane fade" id="five">
 							<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer.</p>
 						</div>
 					</div>					
@@ -159,10 +169,12 @@
 				<div class="widget-foot">
 
 					@if ( $application->closed_at === '0000-00-00 00:00:00')
-						<button class="btn btn-success pull-right" style="margin-left: 10px">
-							<i class="fa fa-thumbs-o-up"></i> Move Forward
-						</button>
-					
+						{{ Form::open(array('url' => "applications/$application->id/advance")) }}
+							<button class="btn btn-success pull-right" type="submit" style="margin-left: 10px">
+								<i class="fa fa-thumbs-o-up"></i> Move Forward
+							</button>
+						{{ Form::close() }}
+						
 						{{ Button::makeDelete($application->id, 'applications.destroy', 'btn btn-danger pull-right', 'fa-minus-circle', 'Close Application') }} 
 					@else
 						{{ Form::open(array('url' => "applications/$application->id/reopen")) }}
@@ -192,47 +204,64 @@
 				
 				<div class="widget-body scroll">
 					<ul class="list-unstyled">
+
 						@foreach($application->comments->reverse() as $comment)
-							@if( $comment->user_id === Auth::user()->id )
-								<li class="by-me">
-									<!-- Use the class "pull-left" in avatar -->
-									<div class="avatar pull-left">
-									  <img src="http://naijaticketshop.com/images/default_profile.jpg" alt="">
-									</div>
 
-									<div class="chat-content">
-										<!-- In meta area, first include "name" and then "time" -->
-										<div class="chat-meta"> {{ Auth::user()->present()->fullName }} 
-											<span class="pull-right">{{ $comment->created_at}} ({{ $comment->present()->commentAge }})</span>
+							<?php  
+
+								$number_words = ['zero', 'one', 'two', 'three', 'four']; 
+
+								$viewed_step = $application->interview_step;
+
+								if ( isset($_GET['step']) )
+								{
+									$viewed_step = array_search($_GET['step'], $number_words);
+								}
+
+							?>
+
+							@if ( (int) $comment->interview_step === (int) $viewed_step )
+								@if( $comment->user_id === Auth::user()->id )
+									<li class="by-me">
+										<!-- Use the class "pull-left" in avatar -->
+										<div class="avatar pull-left">
+										  <img src="http://naijaticketshop.com/images/default_profile.jpg" alt="">
 										</div>
-									  	{{ $comment->message }}
 
-										<div class="pull-right">
-									  		{{ Button::makeCommentsDelete($comment->id, $comment->application_id, 'applications.comments.destroy', 'red', 'fa-trash-o' )}}
-									 	 </div>
+										<div class="chat-content">
+											<!-- In meta area, first include "name" and then "time" -->
+											<div class="chat-meta"> {{ Auth::user()->present()->fullName }} 
+												<span class="pull-right">{{ $comment->created_at}} ({{ $comment->present()->commentAge }})</span>
+											</div>
+										  	{{ $comment->message }}
 
-									  <div class="clearfix"></div>
-									  
-									</div>
-								 </li>
-							@else
-								<li class="by-other">
-									<!-- Use the class "pull-left" in avatar -->
-									<div class="avatar pull-right">
-									  <img src="http://naijaticketshop.com/images/default_profile.jpg" alt="">
-									</div>
+											<div class="pull-right">
+										  		{{ Button::makeCommentsDelete($comment->id, $comment->application_id, 'applications.comments.destroy', 'red', 'fa-trash-o' )}}
+										 	 </div>
 
-									<div class="chat-content">
-									  <!-- In meta area, first include "name" and then "time" -->
-									  <div class="chat-meta"> {{ $comment->user->present()->fullName }}
-									  	<span class="pull-right">{{ $comment->created_at}} ({{ $comment->present()->commentAge }})</span>
-									  </div>
-									  {{ $comment->message }}
-	
-									  <div class="clearfix"></div>
-									</div>
-								 </li>
-							@endif		
+										  <div class="clearfix"></div>
+										  
+										</div>
+									 </li>
+								@else
+									<li class="by-other">
+										<!-- Use the class "pull-left" in avatar -->
+										<div class="avatar pull-right">
+										  <img src="http://naijaticketshop.com/images/default_profile.jpg" alt="">
+										</div>
+
+										<div class="chat-content">
+										  <!-- In meta area, first include "name" and then "time" -->
+										  <div class="chat-meta"> {{ $comment->user->present()->fullName }}
+										  	<span class="pull-right">{{ $comment->created_at}} ({{ $comment->present()->commentAge }})</span>
+										  </div>
+										  {{ $comment->message }}
+		
+										  <div class="clearfix"></div>
+										</div>
+									 </li>
+								@endif	
+							@endif	
 						@endforeach
 					</ul>
 				</div>
@@ -245,6 +274,8 @@
 							'style' => 'width: 87%', 
 							'placeholder' => 'Enter a message...')
 						) }}
+
+						{{ Form::hidden('interview_step', $viewed_step) }}
 
 						{{ Form::submit('Send', array('class' => 'btn btn-info btn-sm')) }}
 						
@@ -286,6 +317,17 @@
 	        $form.append($inputMethod, $inputToken).hide().appendTo('body').submit();
 	    }	
 	});
+   
+    // select which tab is activated
+	var activeTab = "<?= $number_words[$viewed_step]; ?>";
+
+  	$('#tab-' + activeTab).addClass('active');
+  	$('#' + activeTab).addClass('active in');
+
+  	$('#interviewSteps').find('a').on('click', function() {
+  		window.location = "http://haystack.local/applications/{{ $application->id }}?step=" + $(this).attr('href').slice(1);
+  	});
+
   });
 </script>
 @stop

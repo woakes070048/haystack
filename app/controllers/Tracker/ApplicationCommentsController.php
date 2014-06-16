@@ -30,13 +30,20 @@ class ApplicationCommentsController extends \BaseController {
 	 */
 	public function store($app_id)
 	{
+		$application = $this->appRepo->findById($app_id);
+
 		$input = Input::only('message');
+
+		$input['interview_step'] = ( Input::get('interview_step') )
+			? Input::get('interview_step')
+			: $application->interivew_step;
 
 		$this->commentCreateForm->validate($input);
 
 		$comment = $this->commentRepo->create([
 			'user_id' 	     => Auth::user()->id,
 			'application_id' => $app_id,
+			'interview_step' => $input['interview_step'],
 			'message'		 => $input['message']
 		]);
 
